@@ -1,0 +1,25 @@
+{
+  "name": "nconf-envitalize",
+  "version": "1.0.0",
+  "description": "Convert file and argv nconf entries into something that looks more conventionally env-like",
+  "main": "nconf-envitalize.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "./examples/bare.js && ./examples/prefix.js && echo $?"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/websdotcom/nconf-envitalize"
+  },
+  "author": "Matthew Fowle",
+  "license": "X.org",
+  "bugs": {
+    "url": "https://github.com/websdotcom/nconf-envitalize/issues"
+  },
+  "homepage": "https://github.com/websdotcom/nconf-envitalize",
+  "devDependencies": {
+    "nconf": "^0.7.1"
+  }
+}
