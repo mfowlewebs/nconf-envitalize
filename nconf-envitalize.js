@@ -10,6 +10,7 @@ function envitalize(prefix, opts) {
 	opts.nconf = opts.nconf || require('nconf');
 	opts.storeTypes = opts.storeTypes || ['argv', 'file'];
 	opts.transforms = opts.transforms || [t.decamel, t.underbar, t.prefix, t.caps];
+
 	for (var i in opts.nconf.stores) {
 		var store = opts.nconf.stores[i];
 		if (opts.storeTypes.indexOf(store.type) === -1) {
@@ -17,6 +18,9 @@ function envitalize(prefix, opts) {
 		}
 		store = store.store
 		for (var key in store) {
+			if (key === '$0' || key === '_') {
+				continue;
+			}
 			var value = store[key];
 			for (var transform in opts.transforms) {
 				if (typeof(key) !== 'string') {
@@ -25,7 +29,9 @@ function envitalize(prefix, opts) {
 				key = opts.transforms[transform].call(opts, key);
 			}
 			insureWriteable(opts.nconf);
-			opts.nconf.set(key, value);
+			if (!opts.noOverwrite || opts.nconf.get(key) === undefined) {
+				opts.nconf.set(key, value);
+			}
 		}
 	}
 	return opts.nconf

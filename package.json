@@ -1,6 +1,6 @@
 {
   "name": "nconf-envitalize",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Convert file and argv nconf entries into something that looks more conventionally env-like",
   "main": "nconf-envitalize.js",
   "directories": {
